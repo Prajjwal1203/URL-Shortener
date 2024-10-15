@@ -25,7 +25,7 @@ const Header = () => {
 
     <>
     <nav className="py-4 flex justify-between items-center">
-      <Link to="/">
+      <Link to="/dashboard" className="flex">
         <img src="/logo.png" className="h-16" alt="logo"></img>
       </Link>
 
@@ -44,8 +44,10 @@ const Header = () => {
               <DropdownMenuLabel>{user?.user_metadata?.name} </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
+                <Link to = "/dashboard">
                 <LinkIcon className="mr-2 h-4 w-4"></LinkIcon>
-                <span> My Links</span>
+                <span> My Links</span></Link>
+               
                 
                </DropdownMenuItem>
               <DropdownMenuItem className="text-red-400">
@@ -53,6 +55,7 @@ const Header = () => {
                 <span onClick={()=>
                   {
                     fnLogout().then(() =>{
+                      fetchUser();
                       navigate("/")
                     });
                   }
